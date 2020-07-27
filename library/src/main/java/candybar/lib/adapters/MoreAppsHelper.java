@@ -25,11 +25,11 @@ public class MoreAppsHelper {
 
     public static AppModel getAppLink(Context ctx, int adapterPosition, int totalCount) {
         if ((totalCount - MORE_APPS_COUNT) == adapterPosition) {
-            return new AppModel(ctx.getString(R.string.more_app_one_name), ctx.getString(R.string.more_app_one_desc), ctx.getString(R.string.more_app_one_link));
+            return new AppModel(ctx.getString(R.string.more_app_one_name), ctx.getString(R.string.more_app_one_desc), ctx.getString(R.string.more_app_one_link), R.drawable.other_app_one_icon);
         } else if ((totalCount - MORE_APPS_COUNT) + 1 == adapterPosition) {
-            return new AppModel(ctx.getString(R.string.more_app_two_name), ctx.getString(R.string.more_app_two_desc), ctx.getString(R.string.more_app_two_link));
+            return new AppModel(ctx.getString(R.string.more_app_two_name), ctx.getString(R.string.more_app_two_desc), ctx.getString(R.string.more_app_two_link), R.drawable.other_app_two_icon);
         } else {
-            return new AppModel(ctx.getString(R.string.more_app_three_name), ctx.getString(R.string.more_app_three_desc), ctx.getString(R.string.more_app_three_link));
+            return new AppModel(ctx.getString(R.string.more_app_three_name), ctx.getString(R.string.more_app_three_desc), ctx.getString(R.string.more_app_three_link), R.drawable.other_app_three_icon);
         }
     }
 
@@ -38,11 +38,13 @@ public class MoreAppsHelper {
         String name;
         String des;
         String link;
+        int icon;
 
-        public AppModel(String name, String des, String link) {
+        public AppModel(String name, String des, String link, int icon) {
             this.name = name;
             this.des = des;
             this.link = link;
+            this.icon = icon;
         }
     }
 }

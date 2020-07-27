@@ -296,6 +296,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             playDevViewHolder.title.setText(appLink.name);
             playDevViewHolder.subtitle.setText(appLink.des);
+            playDevViewHolder.appIcon.setImageResource(appLink.icon);
         }
     }
 
@@ -705,6 +706,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private final TextView title;
         private final TextView subtitle;
+        private final ImageView appIcon;
         private final LinearLayout container;
 
         GooglePlayDevViewHolder(View itemView) {
@@ -712,6 +714,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             container = itemView.findViewById(R.id.container);
             title = itemView.findViewById(R.id.title);
             subtitle = itemView.findViewById(R.id.subtitle);
+            appIcon = itemView.findViewById(R.id.app_icon);
 
             MaterialCardView card = itemView.findViewById(R.id.card);
             if (CandyBarApplication.getConfiguration().getHomeGrid() == CandyBarApplication.GridStyle.FLAT) {
@@ -743,8 +746,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
 
             int color = ColorHelper.getAttributeColor(mContext, android.R.attr.textColorPrimary);
-            title.setCompoundDrawablesWithIntrinsicBounds(DrawableHelper.getTintedDrawable(
-                    mContext, R.drawable.ic_google_play_more_apps, color), null, null, null);
+            //title.setCompoundDrawablesWithIntrinsicBounds(DrawableHelper.getTintedDrawable(
+            //        mContext, R.drawable.ic_google_play_more_apps, color), null, null, null);
 
             container.setOnClickListener(this);
         }
