@@ -18,6 +18,8 @@ import java.util.List;
 import candybar.lib.R;
 import candybar.lib.activities.CandyBarMainActivity;
 import candybar.lib.adapters.HomeAdapter;
+import candybar.lib.admob.GlobalAdmobInterface;
+import candybar.lib.admob.InterstitialHandler;
 import candybar.lib.applications.CandyBarApplication;
 import candybar.lib.helpers.TapIntroHelper;
 import candybar.lib.helpers.WallpaperHelper;
@@ -78,6 +80,18 @@ public class HomeFragment extends Fragment implements HomeListener {
         }
 
         initHome();
+        showAds();
+    }
+
+    private void showAds() {
+        InterstitialHandler interstitialHandler = null;
+        if (getActivity() instanceof GlobalAdmobInterface) {
+            interstitialHandler = ((GlobalAdmobInterface) getActivity()).getInterstitial();
+        }
+        if (InterstitialHandler.showInterstitialAds && interstitialHandler != null) {
+            interstitialHandler.showFullScreenAd();
+            InterstitialHandler.showInterstitialAds = false;
+        }
     }
 
     @Override

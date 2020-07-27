@@ -54,6 +54,7 @@ import java.util.List;
 import candybar.lib.R;
 import candybar.lib.activities.CandyBarMainActivity;
 import candybar.lib.adapters.RequestAdapter;
+import candybar.lib.admob.InterstitialHandler;
 import candybar.lib.applications.CandyBarApplication;
 import candybar.lib.fragments.dialog.IntentChooserFragment;
 import candybar.lib.helpers.IconsHelper;
@@ -122,6 +123,10 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
             View shadow = view.findViewById(R.id.shadow);
             if (shadow != null) shadow.setVisibility(View.GONE);
         }
+
+        //Show Interstitial Ads
+        InterstitialHandler.showInterstitialAds = true;
+
         return view;
     }
 

@@ -1,8 +1,8 @@
-package com.candybar.dev.activities;
+package com.samy.candybar.activities;
 
 import androidx.annotation.NonNull;
 
-import com.candybar.dev.R;
+import com.samy.candybar.R;
 
 import candybar.lib.activities.CandyBarSplashActivity;
 import candybar.lib.activities.configurations.SplashScreenConfiguration;

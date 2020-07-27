@@ -1,4 +1,4 @@
-package com.candybar.dev.services;
+package com.samy.candybar.services;
 
 import candybar.lib.services.CandyBarMuzeiService;
 

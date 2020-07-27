@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="auto"
-    package="com.candybar.dev">
+    package="com.samy.candybar">
 
     <!-- If you are not using donation and premium request, you need to remove BILLING permission -->
     <uses-permission android:name="com.android.vending.BILLING" />
@@ -18,7 +18,7 @@
 
     <application
         tools:ignore="GoogleAppIndexingWarning,GoogleAppIndexingUrlError"
-        android:name=".applications.CandyBar"
+        android:name="com.samy.candybar.applications.CandyBar"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_config"
@@ -29,7 +29,7 @@
         tools:replace="android:icon">
 
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.samy.candybar.activities.SplashActivity"
             android:launchMode="singleTop"
             android:noHistory="true"
             android:screenOrientation="portrait"
@@ -44,7 +44,7 @@
         </activity>
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.samy.candybar.activities.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:configChanges="orientation|keyboardHidden|screenSize">
@@ -186,7 +186,7 @@
         </activity>
 
         <provider
-            android:name=".services.MuzeiService"
+            android:name="com.samy.candybar.services.MuzeiService"
             android:authorities="${applicationId}.ArtProvider"
             android:label="@string/muzei_art_source_name"
             android:description="@string/muzei_art_source_desc"
@@ -201,7 +201,7 @@
         </provider>
 
         <receiver
-            android:name=".services.ClockWidget"
+            android:name="com.samy.candybar.services.ClockWidget"
             android:label="Clock Widget">
 
             <intent-filter>

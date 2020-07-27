@@ -1,36 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingPrefix"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
 
         <TextView
             android:id="@+id/toolbar_title"
+            fontPath="fonts/Font-Medium.ttf"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:ellipsize="end"
             android:gravity="center_vertical"
+            android:maxLines="1"
             android:text="@string/app_name"
             android:textColor="?attr/toolbar_icon"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/text_toolbar_title"
-            fontPath="fonts/Font-Medium.ttf" />
+            android:textSize="@dimen/text_toolbar_title" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <FrameLayout
-        android:id="@+id/container"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/toolbar">
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/banner_view_wrapper" />
+
+        <RelativeLayout
+            android:id="@+id/banner_view_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/black_20">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/ad_space"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

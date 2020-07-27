@@ -113,11 +113,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mShowIconRequest = true;
         }
 
-        String link = mContext.getResources().getString(R.string.google_play_dev);
+        /*String link = mContext.getResources().getString(R.string.google_play_dev);
         if (link.length() > 0) {
             mItemsCount += 1;
             mShowMoreApps = true;
-        }
+        }*/
+        mItemsCount += MoreAppsHelper.MORE_APPS_COUNT;
+        mShowMoreApps = true;
     }
 
     @Override
@@ -286,6 +288,15 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     String.format(mContext.getResources().getString(R.string.home_loud_wallpapers),
                             Preferences.get(mContext).getAvailableWallpapersCount()));
         }
+
+
+        if (holder instanceof GooglePlayDevViewHolder) {
+            GooglePlayDevViewHolder playDevViewHolder = (GooglePlayDevViewHolder) holder;
+            MoreAppsHelper.AppModel appLink = MoreAppsHelper.getAppLink(playDevViewHolder.title.getContext(), position, getItemCount());
+
+            playDevViewHolder.title.setText(appLink.name);
+            playDevViewHolder.subtitle.setText(appLink.des);
+        }
     }
 
     @Override
@@ -298,13 +309,22 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (position == 0) return TYPE_HEADER;
         if (position == (mHomes.size() + 1) && mShowIconRequest) return TYPE_ICON_REQUEST;
 
-        if (position == (getItemCount() - 2) && mShowWallpapers && mShowMoreApps)
-            return TYPE_WALLPAPERS;
+        /*if (position == (getItemCount() - 2) && mShowWallpapers && mShowMoreApps)
+            return TYPE_WALLPAPERS;*/
 
-        if (position == (getItemCount() - 1)) {
+
+        if (MoreAppsHelper.isWallPaperCount(position, getItemCount()) && mShowWallpapers) {
+            return TYPE_WALLPAPERS;
+        }
+
+        if (MoreAppsHelper.isMoreAppCount(position, getItemCount())) {
+            return TYPE_GOOGLE_PLAY_DEV;
+        }
+
+        /*if (position == (getItemCount() - 1)) {
             if (mShowMoreApps) return TYPE_GOOGLE_PLAY_DEV;
             else if (mShowWallpapers) return TYPE_WALLPAPERS;
-        }
+        }*/
         return TYPE_CONTENT;
     }
 
@@ -684,12 +704,14 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private class GooglePlayDevViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final TextView title;
+        private final TextView subtitle;
         private final LinearLayout container;
 
         GooglePlayDevViewHolder(View itemView) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
             title = itemView.findViewById(R.id.title);
+            subtitle = itemView.findViewById(R.id.subtitle);
 
             MaterialCardView card = itemView.findViewById(R.id.card);
             if (CandyBarApplication.getConfiguration().getHomeGrid() == CandyBarApplication.GridStyle.FLAT) {
@@ -731,12 +753,14 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public void onClick(View view) {
             int id = view.getId();
             if (id == R.id.container) {
-                if (CandyBarApplication.getConfiguration().getOtherApps() != null) {
+                /*if (CandyBarApplication.getConfiguration().getOtherApps() != null) {
                     OtherAppsFragment.showOtherAppsDialog(((AppCompatActivity) mContext).getSupportFragmentManager());
                     return;
-                }
+                }*/
 
-                String link = mContext.getResources().getString(R.string.google_play_dev);
+                MoreAppsHelper.AppModel appInfo = MoreAppsHelper.getAppLink(view.getContext(), getAdapterPosition(), getItemCount());
+
+                String link = appInfo.link;//mContext.getResources().getString(R.string.google_play_dev);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 mContext.startActivity(intent);

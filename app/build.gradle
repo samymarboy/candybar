@@ -31,7 +31,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.candybar.dev"
+        applicationId "com.samy.candybar"
         minSdkVersion rootProject.ext.MinSdk
         targetSdkVersion rootProject.ext.TargetSdk
         versionCode 371
@@ -62,7 +62,6 @@ android {
 
 dependencies {
     implementation project (':library')
-
     // Remove '//' below to Enable OneSignal
     //implementation 'com.onesignal:OneSignal:3.12.4'
 }

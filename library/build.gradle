@@ -109,6 +109,8 @@ dependencies {
     implementation 'com.github.danimahardhika.android-helpers:license:0.1.0'
     implementation 'com.github.danimahardhika.android-helpers:permission:0.1.0'
     implementation 'com.github.danimahardhika:DrawMe:4a672e78fc'
+
+    api 'com.google.android.gms:play-services-ads:19.3.0'
 }
 
 configurations.all {

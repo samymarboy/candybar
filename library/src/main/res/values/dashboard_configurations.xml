@@ -8,7 +8,6 @@
     <!-- New -->
 
 
-
     <!-- CONFIG: DEFAULT THEME -->
 
     <!-- Use dark theme as default theme -->
@@ -57,6 +56,18 @@
     * Link to google play store developer
     * If you don't want to show this part, just leave this empty -->
     <string name="google_play_dev">https://play.google.com/store/apps/dev?id=your_developer_id</string>
+
+    <string name="more_app_one_link">https://play.google.com/store/apps/dev?id=your_developer_id</string>
+    <string name="more_app_one_name">More app one</string>
+    <string name="more_app_one_desc">More app one desc</string>
+
+    <string name="more_app_two_link">https://play.google.com/store/apps/dev?id=your_developer_id</string>
+    <string name="more_app_two_name">More app two</string>
+    <string name="more_app_two_desc">More app two desc</string>
+
+    <string name="more_app_three_link">https://play.google.com/store/apps/dev?id=your_developer_id</string>
+    <string name="more_app_three_name">More app three</string>
+    <string name="more_app_three_desc">More app three desc</string>
 
     <!-- Enable Check for Update -->
     <bool name="enable_check_update">false</bool>
